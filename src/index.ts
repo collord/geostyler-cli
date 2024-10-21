@@ -2,6 +2,7 @@
 
 import SLDParser from 'geostyler-sld-parser';
 import QGISParser from 'geostyler-qgis-parser';
+import LyrxParser from 'geostyler-lyrx-parser';
 // import OpenLayersParser from "geostyler-openlayers-parser";
 import MapfileParser from 'geostyler-mapfile-parser';
 import MapboxParser from 'geostyler-mapbox-parser';
@@ -48,6 +49,8 @@ const getParserFromFormat = (inputString: string): StyleParser | undefined => {
     case 'qgis':
     case 'qml':
       return new QGISParser();
+    case 'lyrx':
+      return new LyrxParser();
     default:
       return undefined;
   }
@@ -72,6 +75,8 @@ const getParserFromFilename = (fileName: string): StyleParser | undefined => {
       return new SLDParser();
     case 'qml':
       return new QGISParser();
+    case 'lyrx':
+      return new LyrxParser();
     default:
       return undefined;
   }
@@ -89,6 +94,8 @@ const getExtensionFromFormat = (format: string): string => {
       return 'map';
     case 'qgis':
       return 'qml';
+    case 'lyrx':
+      return 'lyrx';
     default:
       return format;
   }
